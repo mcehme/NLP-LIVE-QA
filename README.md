@@ -11,7 +11,7 @@
 
 ### Up For Grabs
 
-* Chopper -> needs to take in document names and chop into appropriate sized string passages
+~~* Chopper -> needs to take in document names and chop into appropriate sized string passages~~
 * flask api -> would be nice to have a flask api to run this thing with. Probably want to treat rest of project as a project and import.
 * testing script -> need to be able to automatically run a list of queries and time results.
 
