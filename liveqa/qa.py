@@ -16,7 +16,6 @@ class QABert:
         :rtype: tuple
         :return: a 2-tuple with a boolean success value and either the answer or None'''
         result = self.pipe(question=query, context=passage)
-        print(result)
         score = result['score']
         if score >= self.threshold:
             return True, result['answer']
