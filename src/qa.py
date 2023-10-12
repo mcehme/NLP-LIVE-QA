@@ -1,4 +1,20 @@
+from transformers import pipeline
 class QABert:
-    def runQuery(passage, query):
-        pass
-        #return should be tuple (success, output)
+
+    def __init__(self, threshold):
+        self.pipe = pipeline("question-answering", model="deepset/roberta-base-squad2")
+        self.threshold = threshold
+
+
+
+    def runQuery(self, passage, query):
+        result = self.pipe(question=query, context=passage)
+        print(result)
+        score = result['score']
+        if score >= self.threshold:
+            return True, result['answer']
+        return False, ''
+
+
+
+qa = QABert(0.01)
