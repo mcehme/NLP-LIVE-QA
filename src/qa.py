@@ -14,7 +14,3 @@ class QABert:
         if score >= self.threshold:
             return True, result['answer']
         return False, ''
-
-
-
-qa = QABert(0.01)
