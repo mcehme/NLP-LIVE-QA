@@ -14,3 +14,4 @@ class QAPipeline():
         if success:
             success, ans = self.qabert.runQuery(acceptable, query)
         return success, ans
+    

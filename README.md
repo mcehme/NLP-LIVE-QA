@@ -4,7 +4,7 @@
 
 ~~ 1. Michael -> create re-ranker using https://huggingface.co/amberoad/bert-multilingual-passage-reranking-msmarco ~~
 
-2. Mason -> create BM25 retriever using https://docs.haystack.deepset.ai/docs/retriever
+~~2. Mason -> create BM25 retriever using https://docs.haystack.deepset.ai/docs/retriever~~
 
 ~~ 3. Kenneth -> create QA transformer using https://huggingface.co/deepset/roberta-base-squad2 ~~
 
