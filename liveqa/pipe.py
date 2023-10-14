@@ -1,4 +1,5 @@
 from liveqa import qa, reranker, retriever, chopper
+import time
 class QAPipeline():
     def __init__(self, k, threshold, data_dir):
         self.bm25 = retriever.BM25(data_dir)
@@ -17,8 +18,10 @@ class QAPipeline():
     def batch_execute(self, queries):
         results = dict()
         for query in queries:
+            start = time.perf_counter_ns()
             success, ans = self.execute(query)
-            results[query] = {'success':success, 'answer':ans}
+            end = time.perf_counter_ns()
+            results[query] = {'success':success, 'answer':ans, 'time': end - start}
         return results
     def get_threshold(self):
         return self.rerank.threshold
