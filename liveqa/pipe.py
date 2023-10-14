@@ -14,4 +14,14 @@ class QAPipeline():
         if success:
             success, ans = self.qabert.runQuery(acceptable, query)
         return success, ans
+    def batch_execute(self, queries):
+        results = dict()
+        for query in queries:
+            success, ans = self.execute(query)
+            results[query] = {'success':success, 'answer':ans}
+        return results
+    def get_threshold(self):
+        return self.rerank.threshold
+    def set_threshold(self, threshold):
+        self.rerank.threshold = threshold
     
