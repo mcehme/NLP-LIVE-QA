@@ -1,8 +1,8 @@
 from liveqa import pipe
 import json
 import os
-import glob
 import re
+from numpy import arange
 
 class Tuner():
     def __init__(self, output_dir, k= 10, data_dir='./data/', output_basename='tuner'):
@@ -18,7 +18,7 @@ class Tuner():
         with open(q_file, 'r') as f:
             questions = json.load(f)
         results = dict()
-        for i in range(start, stop, step):
+        for i in arange(start, stop, step):
             self.pipeline.set_threshold(i)
             result = self.pipeline.batch_execute(questions)
             results[f'Threshold: {i}'] = result
@@ -34,9 +34,9 @@ class Tuner():
             number = r.search(file)
             if number is not None and int(number) > maximum:
                 maximum = int(number)
-        with open(f'{self.output_dir}{self.output_basename}{maximum+1}') as f:
+        with open(f'{self.output_dir}{self.output_basename}{maximum+1}', 'w') as f:
             json.dump(results, f)
-            
+
         
 
 

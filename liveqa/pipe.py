@@ -1,4 +1,4 @@
-import qa, reranker, retriever, chopper
+from liveqa import qa, reranker, retriever, chopper
 class QAPipeline():
     def __init__(self, k, threshold, data_dir):
         self.bm25 = retriever.BM25(data_dir)
