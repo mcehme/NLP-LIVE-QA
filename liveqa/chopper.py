@@ -3,7 +3,7 @@ class Chopper():
     def __init__(self, max_passage, safety=5):
         self.max_passage = max_passage
         self.tokenizer = AutoTokenizer.from_pretrained("amberoad/bert-multilingual-passage-reranking-msmarco")
-        self.safety = 5
+        self.safety = safety
     def chop(self, doc, query):
         query_size = len(self.tokenizer.tokenize(query))
         text = doc.to_dict()['content']
