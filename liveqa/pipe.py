@@ -1,7 +1,7 @@
 from liveqa import qa, reranker, retriever, chopper
 import time
 class QAPipeline():
-    def __init__(self, k, threshold, data_dir):
+    def __init__(self, k, data_dir):
         self.bm25 = retriever.BM25(data_dir)
         
         self.qabert = qa.QABert(0.01)
@@ -11,13 +11,15 @@ class QAPipeline():
     def execute(self, query):
         docs = self.bm25.topK(self.k, query)
         passages = self.choppy.chopAll(docs, query)
+        #TODO construct a documentstore on the fly and implement BM25 for passages
 
         ans = None
         answers_scores = []
         for passage in passages:
             answer, score = self.qabert.evaluatePassage(passage, query)
+            print(answer, score)
             if score>= self.threshold:
-                answers_scores.append((answer,score))
+                answers_scores.append((answer,score)) 
         # For debugging or inspection, print the answers and their scores.
         print("All answers and scores:")
         for idx, (answer, score) in enumerate(answers_scores):
@@ -36,6 +38,7 @@ class QAPipeline():
         for query in queries:
             start = time.perf_counter_ns()
             success, ans = self.execute(query)
+            print(success, ans)
             end = time.perf_counter_ns()
             results[query] = {'success':success, 'answer':ans, 'time': end - start}
         return results

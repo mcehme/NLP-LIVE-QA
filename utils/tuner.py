@@ -9,7 +9,7 @@ class Tuner():
         if os.path.exists(output_dir) and not os.path.isdir(output_dir):
             raise Exception('Output_dir must be a directory.')
         self.output_dir = output_dir
-        self.pipeline = pipe.QAPipeline(k, 1, data_dir)
+        self.pipeline = pipe.QAPipeline(k, data_dir)
         self.output_basename = output_basename
 
     def tune(self, q_file, start, stop, step):
