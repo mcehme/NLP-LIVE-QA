@@ -1,0 +1,22 @@
+{
+   "q1": {
+    "question": "What plane is Urza from?",
+    "answer": "Dominaria"
+    },
+    "q2": {
+    "question": "What plane is Ugin the Spirt Dragon from and what is he known for?",
+    "answer": "Ugin was born in Dominaria and now resides in the plane Tarkir, he is most know for his elemental storms that birthed all the dragons that now live there."
+    },
+    "q3": {
+        "question": "Who is Yawgmoth and what did he create?",
+        "answer": "Yawgmoth is was a physican for the Thran empire who perfected the race of being know as Phyrexians."
+    },
+    "q4": {
+        "question": "When did the first Phyrexian invasion happen on Dominaria?",
+        "answer": "4025 AR"
+    },
+    "q5": {
+        "question": "What are the Eldrazi?",
+        "answer": "The Eldrazi are creatures of cealess hunger, who travel interdeminsionally between planes devouring the mana and life energy until the planes destruction."
+    }
+}

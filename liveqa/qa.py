@@ -20,3 +20,6 @@ class QABert:
         if score >= self.threshold:
             return True, result['answer']
         return False, None
+    def evaluatePassage(self, passage, query):
+        result = self.pipe(question=query, context=passage)
+        return result['answer'], result['score']
