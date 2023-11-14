@@ -1,4 +1,4 @@
-from liveqa import qa, reranker, retriever, chopper
+from liveqa import qa, reranker, retriever, chopper, otf_retriever
 import time
 class QAPipeline():
     def __init__(self, k, data_dir):
@@ -11,12 +11,14 @@ class QAPipeline():
     def execute(self, query):
         docs = self.bm25.topK(self.k, query)
         passages = self.choppy.chopAll(docs, query)
-        #TODO construct a documentstore on the fly and implement BM25 for passages
+        
+        otf_bm25 =  otf_retriever.BM25(passages)
+        passages = otf_bm25.topK(self.k, query)
 
         ans = None
         answers_scores = []
         for passage in passages:
-            answer, score = self.qabert.evaluatePassage(passage, query)
+            answer, score = self.qabert.evaluatePassage(passage.content, query)
             print(answer, score)
             if score>= self.threshold:
                 answers_scores.append((answer,score)) 
